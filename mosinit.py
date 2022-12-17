@@ -1,4 +1,4 @@
-from __future__ import division
+
 from scipy.stats import norm
 from neuron import h, load_mechanisms
 from numpy import trapz
@@ -53,7 +53,7 @@ elif (input_cond == 3):
     dsynweight = 0.002 #0.07341 #0.001 #  Distal synapses, weight (muS)   
 
 else:
-    print "Input condition must be 1, 2 or 3"
+    print("Input condition must be 1, 2 or 3")
                   
 ######################################################################
 def test(Tdist,dur,gna,istim,dsynweight):
@@ -133,7 +133,7 @@ def test(Tdist,dur,gna,istim,dsynweight):
     for sec in h.allsec():
         tot += sec.nseg
     h.distance()
-    print "total # of segments (50Hz):", tot      
+    print("total # of segments (50Hz):", tot)      
               
     ##################################################################
     # INITIALIZE
@@ -263,17 +263,17 @@ def test(Tdist,dur,gna,istim,dsynweight):
     # Aim: Have the tot. # of T-channels as in Halnes et al. 2011 regardless dist. chosen.  
     initialize(7)    
     GCATOT7 = tcount()   
-    print 'GCATOT7', GCATOT7
+    print('GCATOT7', GCATOT7)
     initialize(Tdist)
     GCATOTX = tcount()
-    print 'GCATOTX', GCATOTX
+    print('GCATOTX', GCATOTX)
     if (Tdist !=0):
         gcat *=  GCATOT7/GCATOTX
 
     initialize(Tdist)
 
-    print "gcat =", gcat
-    print "stim.amp=",stim.amp
+    print("gcat =", gcat)
+    print("stim.amp=",stim.amp)
 
     ##################################################################
     vec ={}
@@ -320,7 +320,7 @@ def test(Tdist,dur,gna,istim,dsynweight):
 
 vec = test(Tdist,dur,gna,istim,dsynweight)
 
-print "Dist #", Tdist,":",dist[Tdist], "; Epas =", Epas
+print("Dist #", Tdist,":",dist[Tdist], "; Epas =", Epas)
 
 t = vec['t'].to_python()
 d_seg = vec['d_seg'].to_python()
